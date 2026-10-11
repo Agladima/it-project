@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechNova Solutions demo collaboration workspace built with HTML, CSS and JavaScript." />
+  <title>TechNova Teams | Collaboration Workspace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="brand-mark large">tn</div>
+      <p class="eyebrow">TECHNOVA SOLUTIONS LTD.</p>
+      <h1>Work better, together.</h1>
+      <p class="muted login-copy">A demonstration company workspace for staff communication and collaboration.</p>
+      <label for="demoAccount">Sign in with a demo account</label>
+      <select id="demoAccount" class="field">
+        <option value="u1">Amara Okafor — Administrator</option>
+        <option value="u2">David Mensah — IT Support</option>
+        <option value="u3">Zainab Bello — Human Resources</option>
+        <option value="u4">Chidi Eze — Finance</option>
+        <option value="u5">Grace Williams — Marketing</option>
+      </select>
+      <button id="signInBtn" class="btn primary full">Open demo workspace <span>→</span></button>
+      <p class="fine-print">Demo only · No real accounts or messages are sent.</p>
+    </div>
+  </div>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="rail">
+      <div class="brand-mark">tn</div>
+      <button class="rail-item active" data-view="chat" title="Chat"><span class="rail-icon">▤</span><small>Chat</small></button>
+      <button class="rail-item" data-view="teams" title="Teams"><span class="rail-icon">◫</span><small>Teams</small></button>
+      <button class="rail-item" data-view="people" title="People"><span class="rail-icon">♧</span><small>People</small></button>
+      <div class="rail-spacer"></div>
+      <button class="rail-item" id="helpBtn" title="Help"><span class="rail-icon">?</span><small>Help</small></button>
+      <button class="rail-item" id="signOutBtn" title="Sign out"><span class="rail-icon">⇥</span><small>Sign out</small></button>
+    </aside>
+
+    <aside class="sidebar">
+      <div class="workspace-heading">
+        <div class="company-logo">T</div>
+        <div class="workspace-title"><strong>TechNova Solutions</strong><span>Company workspace</span></div>
+        <button class="icon-btn" id="workspaceMenu" aria-label="Workspace options">⌄</button>
+      </div>
+      <div class="sidebar-search"><span>⌕</span><input id="sidebarSearch" placeholder="Search people and chats" /></div>
+      <div class="sidebar-section-title"><span>YOUR WORKSPACE</span><button class="tiny-icon" id="newChatBtn" title="New chat">＋</button></div>
+      <button class="nav-row selected" data-view="chat"><span class="nav-icon">▤</span> Chat <span class="nav-count" id="unreadCount">3</span></button>
+      <button class="nav-row" data-view="teams"><span class="nav-icon">◫</span> Teams</button>
+      <button class="nav-row" data-view="people"><span class="nav-icon">♧</span> Staff directory</button>
+      <div class="sidebar-section-title team-heading"><span>TEAMS AND CHANNELS</span><button class="tiny-icon" id="addTeamBtn" title="Create team or channel">＋</button></div>
+      <div id="teamList" class="team-list"></div>
+      <div class="sidebar-bottom">
+        <div class="storage-note"><div class="storage-icon">✦</div><div><strong>Demo workspace</strong><p>Your changes are saved in this browser.</p></div></div>
+        <button class="profile-mini" id="profileButton"><div id="myAvatar" class="avatar">AO</div><div class="profile-mini-text"><strong id="myName">Amara Okafor</strong><span id="myRole">Administrator</span></div><span class="online-dot"></span><span class="more">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumbs"><span class="crumb-icon">▤</span><span id="topSection">Chat</span><span class="slash">/</span><strong id="topContext">General</strong></div>
+        <div class="topbar-actions"><div class="status-pill"><span class="green-dot"></span> Available</div><button class="icon-btn" id="topSearchBtn" title="Search">⌕</button><button class="icon-btn" id="notificationsBtn" title="Notifications">♧</button><div id="topAvatar" class="avatar small-avatar">AO</div></div>
+      </header>
+
+      <section id="chatView" class="view chat-layout">
+        <div class="chat-list-panel">
+          <div class="panel-title-row"><div><h2>Chat</h2><p class="muted">Keep conversations moving.</p></div><button class="round-action" id="newChatBtn2" title="New chat">✎</button></div>
+          <div class="segmented"><button class="seg active" data-chat-filter="all">All</button><button class="seg" data-chat-filter="unread">Unread</button><button class="seg" data-chat-filter="groups">Groups</button></div>
+          <div class="chat-list" id="chatList"></div>
+        </div>
+        <div class="conversation-panel" id="conversationPanel"></div>
+      </section>
+
+      <section id="teamsView" class="view hidden full-view"></section>
+      <section id="peopleView" class="view hidden full-view"></section>
+    </main>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
